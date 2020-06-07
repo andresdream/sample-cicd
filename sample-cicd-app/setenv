@@ -1,0 +1,4 @@
+echo "Setting environment variables..."
+export APP_NAME="sample-cicd"
+export ENV="dev"
+export AWS_REGION="us-east-1"

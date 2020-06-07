@@ -1,0 +1,1 @@
+sam local invoke -t billma_app.yaml -d 5858 -e $1 $2
