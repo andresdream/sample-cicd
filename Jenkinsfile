@@ -10,8 +10,7 @@ pipeline {
         stage("Test") {
             steps{
                 echo "Executing unit testing..."
-                sh "cd hello-world"
-                sh "npm test"
+                sh "cd hello-world;npm test"
             }            
         }
         stage("Deploy"){
