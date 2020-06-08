@@ -1,4 +1,3 @@
-
 pipeline {
     
     agent{
@@ -6,9 +5,16 @@ pipeline {
     }
 
     stages{
-        stage("build & deploy"){
+        stage("Test") {
             steps{
-                echo "========executing A========"
+                echo "Executing unit testing..."
+                sh "cd helllo-world"
+                sh "npm test"
+            }            
+        }
+        stage("Deploy"){
+            steps{
+                echo "Executing SAM Build and Deploy..."
                 samDeploy([
                     credentialsId: 'fchaves keys', 
                     kmsKeyId: '', 
@@ -20,28 +26,22 @@ pipeline {
                     stackName: 'sample-cicd-stack', 
                     templateFile: 'template.yaml'])        
             }
-            post{
-                always{
-                    echo "========always========"
-                }
+            post{                
                 success{
-                    echo "========A executed successfully========"
+                    echo "Stage Build and Deploy success!"
                 }
                 failure{
-                    echo "========A execution failed========"
+                    echo "There was an error on stage Build & Deploy"
                 }
             }
         }
     }
-    post{
-        always{
-            echo "========always========"
-        }
+    post{        
         success{
-            echo "========pipeline executed successfully ========"
+            echo "Pipeline success!"
         }
         failure{
-            echo "========pipeline execution failed========"
+            echo "Pipeline failed!"
         }
     }
 }       
