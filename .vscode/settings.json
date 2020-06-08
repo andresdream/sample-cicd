@@ -1,0 +1,14 @@
+{
+    "jenkins-jack.jenkins.connections": [
+        {
+            "name": "sbolivar-jenkins",                            // "name" can be seen in the host selection command
+            "uri": "http://52.91.116.179:8080/",
+            "username": "fchaves",
+            "password": "1175b9b3a26432e8ddfe12d9e23b5cea99",  // gen API token via <your-jenkins>/user/<user name>/configure
+                                                                // E.g. http://127.0.0.1:8080/user/drapplesauce/configure
+    
+            "active": true                                  // Indicates the active jenkins host you're connected to.
+                                                            // Also set via host selection command
+        }   
+    ]
+}
