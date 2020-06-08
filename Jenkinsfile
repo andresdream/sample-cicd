@@ -8,7 +8,7 @@ pipeline {
         stage("Test") {
             steps{
                 echo "Executing unit testing..."
-                sh "cd helllo-world"
+                sh "cd hello-world"
                 sh "npm test"
             }            
         }
