@@ -1,7 +1,7 @@
 pipeline {
     
     agent{
-        label "cicd"
+        label "node"
     }
 
     stages{
