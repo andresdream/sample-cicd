@@ -1,8 +1,10 @@
 pipeline {
     
     agent{
-        label "node"
+        label "cicd"
     }
+
+    tools {nodejs "nodejs"}
 
     stages{
         stage("Test") {
