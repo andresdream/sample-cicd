@@ -1,48 +1,61 @@
 pipeline {
     
-    agent{
-        label "cicd"
+    agent {
+        node {
+            label 'cicd'
+        }
     }
 
-    tools {nodejs "nodejs"}
+    options {
+        buildDiscarder logRotator( 
+                    daysToKeepStr: '16', 
+                    numToKeepStr: '10'
+            )
+    }
 
-    stages{
-        stage("Test") {
-            steps{
-                echo "Executing unit testing..."
-                sh "cd hello-world;npm test"
-            }            
-        }
-        stage("Deploy"){
-            steps{
-                echo "Executing SAM Build and Deploy..."
-                samDeploy([
-                    credentialsId: 'fchaves keys', 
-                    kmsKeyId: '', 
-                    outputTemplateFile: '', 
-                    region: 'us-east-1', 
-                    roleArn: '', 
-                    s3Bucket: 'sample-cicd-s3bucket', 
-                    s3Prefix: '', 
-                    stackName: 'sample-cicd-stack', 
-                    templateFile: 'template.yaml'])        
-            }
-            post{                
-                success{
-                    echo "Stage Build and Deploy success!"
-                }
-                failure{
-                    echo "There was an error on stage Build & Deploy"
-                }
+    stages {
+
+        stage('Cleanup Workspace') {
+            steps {
+                cleanWs()
+                sh """
+                echo "Cleaned Up Workspace For Project"
+                """
             }
         }
-    }
-    post{        
-        success{
-            echo "Pipeline success!"
+
+        stage(' Unit Testing') {
+            steps {
+                sh """
+                echo "Running Unit Tests"
+                """
+            }
         }
-        failure{
-            echo "Pipeline failed!"
+
+        stage('Code Analysis') {
+            steps {
+                sh """
+                echo "Running Code Analysis"
+                """
+            }
         }
+
+        stage('Build Deploy Code') {
+            when {
+                branch 'develop'
+            }
+            steps {
+                sh """
+                echo "Building Artifact"
+                """
+
+                sh """
+                echo "Deploying Code"
+                """
+            }
+        }
+
+
     }
-}       
+
+}
