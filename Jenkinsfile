@@ -24,6 +24,16 @@ pipeline {
             }
         }
 
+        stage('Code Checkout') {
+            steps {
+                checkout([
+                    $class: 'GitSCM', 
+                    branches: [[name: '*/main']], 
+                    userRemoteConfigs: [[url: 'https://github.com/francisco-chaves-dc/sample-cicd.git']]
+                ])
+            }
+        }
+
         stage(' Unit Testing') {
             steps {
                 sh """
