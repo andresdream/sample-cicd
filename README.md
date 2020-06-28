@@ -1,3 +1,5 @@
+Sample test change
+
 # sample-cicd-app
 
 This is a sample template for sample-cicd-app - Below is a brief explanation of what we have generated for you:
