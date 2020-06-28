@@ -23,12 +23,13 @@ pipeline {
                 """
             }
         }
-      
+
         stage(' Unit Testing') {
-            steps {
+            steps {                
                 sh """
                 echo "Running Unit Tests"
                 """
+                sh "ls -la"
             }
         }
 
