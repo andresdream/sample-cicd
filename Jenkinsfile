@@ -29,9 +29,7 @@ pipeline {
         stage(' Unit Testing') {
             steps {                
                 echo "Running Unit Tests"
-                sh "pwd"
-                sh "ls -la"
-                /*sh "cd sample-app;npm test"*/
+                sh "cd sample-app;npm test"
             }
         }
 
@@ -49,17 +47,17 @@ pipeline {
             }
             steps {
                 echo "Packaging and deploying Serverless artifacts..."
-                echo "BranchName: $BRANCH_NAME"
-                /*samDeploy([
+                //echo "BranchName: $BRANCH_NAME"
+                samDeploy([
                     credentialsId: 'aws-fchaves-devops',
                     kmsKeyId: '',
                     outputTemplateFile: '',
                     region: 'us-east-1',
                     roleArn: '',
-                    s3Bucket: 'sample-cicd-s3bucket',
+                    s3Bucket: 'sample-cicd-s3bucket2-devops',
                     s3Prefix: '',
                     stackName: 'dev',
-                    templateFile: 'template.yaml']) */
+                    templateFile: 'template.yaml'])
             }
         }
 
