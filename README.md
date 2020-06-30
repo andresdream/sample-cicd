@@ -1,5 +1,5 @@
 
-CHange to feature 1
+CHange to feature 2
 
 # sample-cicd-app
 
