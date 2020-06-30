@@ -17,7 +17,7 @@ pipeline {
             steps{
                 echo "Executing SAM Build and Deploy..."
                 samDeploy([
-                    credentialsId: 'fchaves keys', 
+                    credentialsId: 'aws-fchaves-devops',
                     kmsKeyId: '', 
                     outputTemplateFile: '', 
                     region: 'us-east-1', 
