@@ -13,6 +13,8 @@ pipeline {
             )
     }
 
+    tools {nodejs "nodejs"}
+
     stages {
 
         stage('Cleanup Workspace') {
@@ -26,10 +28,8 @@ pipeline {
 
         stage(' Unit Testing') {
             steps {                
-                sh """
                 echo "Running Unit Tests"
-                """
-                sh "ls -la"
+                sh "cd sample-app;npm test"
             }
         }
 
@@ -46,13 +46,18 @@ pipeline {
                 branch 'develop'
             }
             steps {
-                sh """
-                echo "Building Artifact"
-                """
-
-                sh """
-                echo "Deploying Code"
-                """
+                echo "Packaging and deploying Serverless artifacts..."
+                echo "BranchName: $BRANCH_NAME"
+                /*samDeploy([
+                    credentialsId: 'aws-fchaves-devops',
+                    kmsKeyId: '',
+                    outputTemplateFile: '',
+                    region: 'us-east-1',
+                    roleArn: '',
+                    s3Bucket: 'sample-cicd-s3bucket',
+                    s3Prefix: '',
+                    stackName: 'dev',
+                    templateFile: 'template.yaml']) */
             }
         }
 

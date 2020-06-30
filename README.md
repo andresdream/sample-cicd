@@ -63,7 +63,7 @@ AWS Lambda NodeJS runtime requires a flat folder with all dependencies including
     HelloWorldFunction:
         Type: AWS::Serverless::Function
         Properties:
-            CodeUri: hello-world/
+            CodeUri: sample-app/
             ...
 ```
 
