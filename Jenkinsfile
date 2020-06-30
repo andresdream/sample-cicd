@@ -29,7 +29,9 @@ pipeline {
         stage(' Unit Testing') {
             steps {                
                 echo "Running Unit Tests"
-                sh "cd sample-app;npm test"
+                sh "pwd"
+                sh "ls -la"
+                /*sh "cd sample-app;npm test"*/
             }
         }
 
