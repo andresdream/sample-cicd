@@ -85,8 +85,8 @@ pipeline {
                     s3Prefix: '',
                     stackName: 'dev',
                     templateFile: 'template.yaml'])
-            }*/
-        }
+            }
+        }*/
 
 
     }
