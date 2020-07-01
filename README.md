@@ -1,5 +1,4 @@
-
-Sample test change  24
+4
 
 # sample-cicd-app
 
