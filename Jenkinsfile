@@ -40,8 +40,35 @@ pipeline {
                 """
             }
         }
+        
+        stage('Deploy to Dev') {
+            when {
+                branch 'develop'
+            }
+            steps {
+                echo "Deploying to Dev. environment from $BRANCH_NAME branch..."
+            }
+        }
 
-        stage('Build Deploy Code') {
+        stage('Deploy to Test') {
+            when {
+                branch 'stage'
+            }
+            steps {
+                echo "Deploying to Test environment from $BRANCH_NAME branch..."
+            }
+        }
+        
+        stage('Deploy to Production') {
+            when {
+                branch 'master'
+            }
+            steps {
+                echo "Deploying to Production environment from $BRANCH_NAME branch..."
+            }
+        }
+        
+        /*stage('Build Deploy Code') {
             when {
                 branch 'develop'
             }
@@ -59,7 +86,7 @@ pipeline {
                     stackName: 'dev',
                     templateFile: 'template.yaml'])
             }
-        }
+        }*/
 
 
     }
