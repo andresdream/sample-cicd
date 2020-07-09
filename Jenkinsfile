@@ -26,12 +26,18 @@ pipeline {
 
         stage('Tools Setup') {
             steps {                
-                echo "Checking git..."
-                sh "git -v"
-                echo "Checking Java..."
+                echo 'Validando git...'
+                sh "git --version"
+                echo 'Validando NodeJs...'
+                sh "node -v"
+                echo 'Validando npm...'
+                sh "npm -v"
+                echo 'Validando Java...'
                 sh "java -version"
-                echo "Checking Gradle..."
-                sh "gradle -v -g gradle_user_home"
+                echo 'Validando Terraform...'
+                sh "terraform --version"
+                echo 'Validando Gradle...'
+                sh "gradle -v -g gradle-user-home"
             }
         }
         
