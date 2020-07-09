@@ -207,3 +207,4 @@ sam logs -n HelloWorldFunction --stack-name sample-cicd-app --tail
 ```
 
 **NOTE**: Alternatively this could be part of package.json scripts section.
+test 1
