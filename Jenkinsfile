@@ -2,7 +2,7 @@ pipeline {
     
     agent {
         node {
-            label 'cicd'
+            label 'nodejs-slave'
         }
     }
 
@@ -12,8 +12,6 @@ pipeline {
                     numToKeepStr: '10'
             )
     }
-
-    tools {nodejs "nodejs"}
 
     stages {
 
@@ -26,6 +24,17 @@ pipeline {
             }
         }*/
 
+        stage('Tools Setup') {
+            steps {                
+                echo "Checking git..."
+                sh "git -v"
+                echo "Checking Java..."
+                sh "java -version"
+                echo "Checking Gradle..."
+                sh "gradle -v -g gradle_user_home"
+            }
+        }
+        
         stage(' Unit Testing') {
             steps {                
                 echo "Running Unit Tests"
