@@ -61,7 +61,7 @@ pipeline {
                 branch 'develop'
             }
             steps {
-                echo "Deploying to Dev. environment from $BRANCH_NAME branch to $CHANGE_TARGET branch..."
+                echo "Deploying to Dev. environment from $BRANCH_NAME branch..."
             }
         }
 
