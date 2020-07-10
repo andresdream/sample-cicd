@@ -49,7 +49,7 @@ pipeline {
 
         stage ("Validating branch") {
             steps {
-                echo "Branch: $BRANCH_NAME"
+                //echo "Branch: $BRANCH_NAME"
             }
         }
         
