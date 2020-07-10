@@ -15,7 +15,7 @@ pipeline {
 
     stages {
 
-        stage('Tools Setup') {
+        /*stage('Tools Setup') {
             steps {                
                 echo 'Validando git...'
                 sh "git --version"
@@ -30,7 +30,7 @@ pipeline {
                 echo 'Validando Gradle...'
                 sh "gradle -v -g gradle-user-home"
             }
-        }
+        }*/
         
         stage(' Unit Testing') {
             steps {                
@@ -51,44 +51,6 @@ pipeline {
             steps {
                 echo "Packaging and deploying Serverless artifacts..."                
                 samDeploy([
-                    credentialsId: 'aws-jenkins-credentials',
-                    kmsKeyId: '',
-                    outputTemplateFile: '',
-                    region: 'us-east-1',
-                    roleArn: '',
-                    s3Bucket: 'sample-cicd-s3bucket2-devops',
-                    s3Prefix: '',
-                    stackName: 'dev',
-                    templateFile: 'template.yaml'])
-            }
-        }
-
-/*         stage('Deploy to Test') {
-            when {
-                branch 'stage'
-            }
-            steps {
-                echo "Deploying to Test environment from $BRANCH_NAME branch..."
-            }
-        }
-        
-        stage('Deploy to Production') {
-            when {
-                branch 'master'
-            }
-            steps {
-                echo "Deploying to Production environment from $BRANCH_NAME branch..."
-            }
-        } */
-        
-        /*stage('Build Deploy Code') {
-            when {
-                branch 'develop'
-            }
-            steps {
-                echo "Packaging and deploying Serverless artifacts..."
-                //echo "BranchName: $BRANCH_NAME"
-                samDeploy([
                     credentialsId: 'aws-fchaves-devops',
                     kmsKeyId: '',
                     outputTemplateFile: '',
@@ -99,9 +61,7 @@ pipeline {
                     stackName: 'dev',
                     templateFile: 'template.yaml'])
             }
-        }*/
-
-
+        }        
     }
 
 }
