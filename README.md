@@ -210,3 +210,4 @@ sam logs -n HelloWorldFunction --stack-name sample-cicd-app --tail
 test 1
 test 1
 1
+1
