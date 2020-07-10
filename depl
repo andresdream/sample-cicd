@@ -1,1 +1,1 @@
-sam deploy --template-file  billma_app-pack.yaml --stack-name billma-app-stack --region us-east-1 --capabilities CAPABILITY_NAMED_IAM
+sam deploy --template-file  template.yaml --stack-name $APP_NAME_$TARGET_ENV_stack --region $AWS_REGION --capabilities CAPABILITY_NAMED_IAM

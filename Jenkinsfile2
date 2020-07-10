@@ -15,22 +15,6 @@ pipeline {
 
     stages {
 
-        /*stage('Tools Setup') {
-            steps {                
-                echo 'Validando git...'
-                sh "git --version"
-                echo 'Validando NodeJs...'
-                sh "node -v"
-                echo 'Validando npm...'
-                sh "npm -v"
-                echo 'Validando Java...'
-                sh "java -version"
-                echo 'Validando Terraform...'
-                sh "terraform --version"
-                echo 'Validando Gradle...'
-                sh "gradle -v -g gradle-user-home"
-            }
-        }*/
         
         stage(' Unit Testing') {
             steps {                
@@ -58,7 +42,7 @@ pipeline {
                     roleArn: '',
                     s3Bucket: 'sample-cicd-s3bucket2-devops',
                     s3Prefix: '',
-                    stackName: 'dev',
+                    stackName: 'sample_cicd-dev-stack',
                     templateFile: 'template.yaml'])
             }
         }        
