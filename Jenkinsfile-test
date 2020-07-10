@@ -1,0 +1,51 @@
+pipeline {
+    
+    agent {
+        node {
+            label 'nodejs-slave'
+        }
+    }
+
+    options {
+        buildDiscarder logRotator( 
+                    daysToKeepStr: '16', 
+                    numToKeepStr: '10'
+            )
+    }
+
+    stages {
+
+        
+        stage(' Unit Testing') {
+            steps {                
+                echo "Running Unit Tests"
+                sh "cd sample-app;npm test"
+            }
+        }
+
+        stage('Code Analysis') {
+            steps {
+                sh """
+                echo "Running Code Analysis. ToDo: Invocar SonarCloud desde aqui..."
+                """
+            }
+        }
+
+        stage('Code Deploy to Stage') {
+            steps {
+                echo "Packaging and deploying Serverless artifacts to Stage environment..."                
+                samDeploy([
+                    credentialsId: 'aws-fchaves-devops',
+                    kmsKeyId: '',
+                    outputTemplateFile: '',
+                    region: 'us-east-1',
+                    roleArn: '',
+                    s3Bucket: 'sample-cicd-s3bucket2-devops',
+                    s3Prefix: '',
+                    stackName: 'stage',
+                    templateFile: 'template.yaml'])
+            }
+        }        
+    }
+
+}

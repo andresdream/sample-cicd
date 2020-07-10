@@ -1,1 +1,1 @@
-sam deploy --template-file  billma_app-pack.yaml --stack-name billma-app-stack --region us-east-1 --capabilities CAPABILITY_NAMED_IAM
+sam deploy --template-file  template-pack.yaml --s3-bucket sample-cicd-s3bucket2-devops --stack-name dev --region $AWS_REGION --capabilities CAPABILITY_NAMED_IAM
