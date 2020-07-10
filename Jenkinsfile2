@@ -42,7 +42,7 @@ pipeline {
                     roleArn: '',
                     s3Bucket: 'sample-cicd-s3bucket2-devops',
                     s3Prefix: '',
-                    stackName: 'sample_cicd-dev-stack',
+                    stackName: 'dev',
                     templateFile: 'template.yaml'])
             }
         }        
