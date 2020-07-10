@@ -12,20 +12,8 @@ Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: HelloWorldFunction
+      CodeUri: s3://sample-cicd-s3bucket2-devops/454e9e801e8537bdb20e747f7ba595cb
       Handler: app.lambdaHandler
-      Runtime: nodejs10.x
-      Events:
-        HelloWorld:
-          Type: Api
-          Properties:
-            Path: /hello
-            Method: get
-  HelloWorldFunction2:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: ../../sample-app
-      Handler: src/functions/handler2.lambdaHandler
       Runtime: nodejs10.x
       Events:
         HelloWorld:

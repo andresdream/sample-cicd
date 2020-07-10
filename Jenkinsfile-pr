@@ -1,0 +1,36 @@
+pipeline {
+    
+    agent {
+        node {
+            label 'nodejs-slave'
+        }
+    }
+
+    options {
+        buildDiscarder logRotator( 
+                    daysToKeepStr: '16', 
+                    numToKeepStr: '10'
+            )
+    }
+
+    stages {
+
+        
+        stage(' Unit Testing') {
+            steps {                
+                echo "Running Unit Tests"
+                sh "cd sample-app;npm test"
+            }
+        }
+
+        stage('Code Analysis') {
+            steps {
+                sh """
+                echo "Running Code Analysis. ToDo: Invocar SonarCloud desde aqui..."
+                """
+            }
+        }
+
+    }
+
+}
