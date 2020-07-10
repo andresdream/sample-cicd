@@ -1,4 +1,3 @@
-1
 
 # sample-cicd-app
 
@@ -207,6 +206,7 @@ sam logs -n HelloWorldFunction --stack-name sample-cicd-app --tail
 ```
 
 **NOTE**: Alternatively this could be part of package.json scripts section.
+<<<<<<< HEAD
 test 1
 test 1
 1
@@ -214,3 +214,5 @@ test 1
 1
 1
 1
+=======
+>>>>>>> 19ce40bafee5c085e97991315db52e85ca6ea30a
