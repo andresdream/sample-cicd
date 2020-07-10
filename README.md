@@ -1,4 +1,4 @@
-2
+
 
 # sample-cicd-app
 
