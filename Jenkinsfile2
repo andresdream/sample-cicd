@@ -46,6 +46,12 @@ pipeline {
                 """
             }
         }
+
+        stage ("Validating branch") {
+            steps {
+                echo "Branch: $BRANCH_NAME"
+            }
+        }
         
         stage('Deploy to Dev') {
             when {
