@@ -16,6 +16,7 @@ let response;
  */
 exports.lambdaHandler = async (event, context) => {
     var test = "line added 4"
+    var test2 = "line added 4"
     try {
         // const ret = await axios(url);
         response = {
