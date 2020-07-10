@@ -19,6 +19,7 @@ exports.lambdaHandler = async (event, context) => {
     try {
         // const ret = await axios(url);
         response = {
+        response = {
             'statusCode': 200,
             'body': JSON.stringify({
                 message: 'hello world Seguros Bolivar',
