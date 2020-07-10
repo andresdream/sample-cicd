@@ -42,27 +42,28 @@ pipeline {
         stage('Code Analysis') {
             steps {
                 sh """
-                echo "Running Code Analysis"
+                echo "Running Code Analysis. ToDo: Invocar SonarCloud desde aqui..."
                 """
             }
         }
 
-        stage ("Validating branch") {
+        stage('Code Deploy to Dev') {
             steps {
-                echo "Branch: $BRANCH_NAME"
-            }
-        }
-        
-        stage('Deploy to Dev') {
-            when {
-                branch 'develop'
-            }
-            steps {
-                echo "Deploying to Dev. environment from $BRANCH_NAME branch..."
+                echo "Packaging and deploying Serverless artifacts..."                
+                samDeploy([
+                    credentialsId: 'aws-jenkins-credentials',
+                    kmsKeyId: '',
+                    outputTemplateFile: '',
+                    region: 'us-east-1',
+                    roleArn: '',
+                    s3Bucket: 'sample-cicd-s3bucket2-devops',
+                    s3Prefix: '',
+                    stackName: 'dev',
+                    templateFile: 'template.yaml'])
             }
         }
 
-        stage('Deploy to Test') {
+/*         stage('Deploy to Test') {
             when {
                 branch 'stage'
             }
@@ -78,7 +79,7 @@ pipeline {
             steps {
                 echo "Deploying to Production environment from $BRANCH_NAME branch..."
             }
-        }
+        } */
         
         /*stage('Build Deploy Code') {
             when {
